@@ -96,10 +96,7 @@ public class Crawler {
 
     /* 3. Разбиение текста на слова   */
     public List<String> separateWords(String text) {
-
-         return Collections.list(new StringTokenizer (text.toLowerCase().trim(),".,:!?\"#$%()+\\/*-@\u00AB\u00BB ")).stream()
-                 .map(token -> (String) token)
-                 .collect(Collectors.toList());
+        return Arrays.asList(Pattern.compile("\\s+").split(text.toLowerCase().replaceAll("\\,|\\.|\\?|\\!", "")));
     }
 
 
